@@ -3,27 +3,26 @@ const calculate = (array) => {
   const operators = ['+', '-', '*', '/']
 
   for (let index = 0; index < array.length; index++) {
-    const element = array[index]
 
-    if (element === null) {
+    if (array[index] === undefined || array[index] === '') continue
+
+    if (typeof array[index] === 'number') {
+      newArray.push(array[index])
+      continue
+    }
+
+    if (array[index] === null) {
       newArray.push(0)
       continue
     }
 
-    if (!isNaN(Number(element))) {
-      newArray.push(Number(element))
+    if (!isNaN(Number(array[index]))) {
+      newArray.push(Number(array[index]))
       continue
     }
 
-    if (operators.includes(element)) {
-      newArray.push(element)
-      continue
-    }
-
-    if (element === undefined || element === '') continue
-
-    if (typeof element === 'number') {
-      newArray.push(element)
+    if (operators.includes(array[index])) {
+      newArray.push(array[index])
       continue
     }
   }
